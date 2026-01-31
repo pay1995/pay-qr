@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scan QR</title>
+
+<!-- Library STABIL -->
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+#reader {
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+</head>
+
+<body>
+
+<div id="reader"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const html5QrCode = new Html5Qrcode("reader");
+
+  html5QrCode.start(
+    { facingMode: "environment" },
+    { fps: 10, qrbox: 300 },
+    function(decodedText) {
+      window.location.href = decodedText;
+    }
+  );
+
+});
+</script>
+
+</body>
+</html>
